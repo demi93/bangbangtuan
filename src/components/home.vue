@@ -1,11 +1,20 @@
 <template>
   <div class="hello">
+    <Header></Header>
+    <Register></Register>
    </div>
 </template>
 
 <script>
+import Header from '../components/header'
+import Login from '../components/login'
+import Register from '../components/register'
 export default {
   name: 'HelloWorld',
+  components: {
+    Header,
+    Login,
+    Register},
   data () {
     return {
       msg: 'Welcome to Your Vue.js App'
@@ -27,6 +36,7 @@ li {
   display: inline-block;
   margin: 0 10px;
 }
+
 a {
   color: #42b983;
 }
