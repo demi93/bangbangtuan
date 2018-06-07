@@ -1,20 +1,22 @@
 <template>
   <div class="hello">
     <Header></Header>
-    <Register></Register>
+    <router-view></router-view>
    </div>
 </template>
 
 <script>
 import Header from '../components/header'
-import Login from '../components/login'
-import Register from '../components/register'
+// import Login from '../components/login'
+// import Register from '../components/register'
+// import Router from 'vue-router'
+
 export default {
   name: 'HelloWorld',
   components: {
-    Header,
-    Login,
-    Register},
+    Header
+  },
+
   data () {
     return {
       msg: 'Welcome to Your Vue.js App'

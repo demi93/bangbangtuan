@@ -3,31 +3,54 @@
      <div class="main">
          <div class="title">欢迎来到猿计划</div>
          <div class="phone">
-             <input type="text" placeholder="请输入登录手机号"/>
+             <input v-model="username" type="text" placeholder="请输入登录手机号"/>
          </div>
          <div class="password">
-             <input type="text" placeholder="6-16位密码，区分大小写，不能使用空格">
+             <input v-model="password" type="text" placeholder="6-16位密码，区分大小写，不能使用空格">
          </div>
          <div class="text">
              <span class="next"><input type="checkbox" name="" id="">下次自动登录</span>
              <span >忘记密码</span>
-             <span class="red">
-                 立即注册
+             <span class="red"  >
+                <router-link to="home/register">立即注册</router-link>
              </span>
          </div>
-         <button>登录</button>
+         <button @click='login'>登录</button>
      </div>
    </div>
 </template>
 
 <script>
+import axios from 'axios'
+
 export default {
 //   name: 'header',
   data () {
     return {
-      msg: 'Welcome to Your Vue.js App'
+      msg: 'Welcome to Your Vue.js App',
+      username: '',
+      password: ''
     }
+  },
+  methods: {
+    login: function () {
+      var self = this
+      var timestep = self.GLOBAL.gettime()
+      var random = self.GLOBAL.getRadom()
+      axios.get(this.GLOBAL.url + '/login.php?username=' + self.username + '&timestep=' + timestep + '&random=' + random + '&password=' + self.password).then(function (response) {
+        console.log(response)
+        if (response.data.message == null) {
+          localStorage.setItem('userId', response.data.userId)
+        }
+      })
+    },
+    gettime: function () {
+      var times = new Date()
+      return times
+    }
+
   }
+
 }
 </script>
 
