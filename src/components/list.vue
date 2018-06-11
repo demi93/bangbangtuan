@@ -47,11 +47,11 @@ export default {
   },
   created: function () {
     var url = this.GLOBAL.url
-    var event = 'selectArticleList'
-    var kind = '' 
+    // var event = 'selectArticleList'
+    var kind
     var timestep = this.GLOBAL.gettime()
     var random = this.GLOBAL.getRadom()
-    axios.get(url + '/article.php?event=selectArticleList&kind=""&timestep=' + timestep + '&random=' + random).then(function (response) {
+    axios.get(url + '/article.php?event=selectArticleList&kind=""&timestep=' + timestep + '&random=' + random + '&kind=' + kind).then(function (response) {
       console.log(response)
     })
   },

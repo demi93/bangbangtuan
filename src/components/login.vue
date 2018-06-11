@@ -41,6 +41,7 @@ export default {
         console.log(response)
         if (response.data.message == null) {
           localStorage.setItem('userId', response.data.userId)
+          self.$router.push('/index')
         }
       })
     },

@@ -43,7 +43,6 @@ export default {
     },
     towrite: function () {
       this.$router.push('/write')
-
     }
   }
 }
